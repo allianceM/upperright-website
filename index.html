@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UPPERRIGHT 东区一角 — Creative & Production Studio</title>
+  <meta name="description" content="UPPERRIGHT 东区一角 is a boutique creative studio integrating creative planning and content production. Full-pipeline TVC, design and AI-native production." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./js/vendor/three.module.min.js",
+      "cannon-es": "./js/vendor/cannon-es.js"
+    }
+  }
+  </script>
+</head>
+<body class="lang-en">
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader">
+    <div class="loader-stage">
+      <svg class="loader-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path id="loader-mouth" d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="#F4F6F2"/>
+      </svg>
+      <div class="loader-dots" id="loader-dots">
+        <span class="ldot"></span><span class="ldot"></span><span class="ldot"></span>
+        <span class="ldot"></span><span class="ldot"></span>
+      </div>
+    </div>
+    <div class="loader-meta">
+      <span class="loader-word">UPPERRIGHT</span>
+      <span class="loader-pct" id="loader-pct">0</span>
+    </div>
+  </div>
+
+  <!-- ============ FIXED CANVASES ============ -->
+  <canvas id="tube-canvas" aria-hidden="true"></canvas>
+  <canvas id="trail-canvas" aria-hidden="true"></canvas>
+
+  <!-- ============ CUSTOM CURSOR ============ -->
+  <div class="cursor" id="cursor"><span class="cursor-dot"></span></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a class="nav-brand" href="#top" data-cursor>
+      <svg class="nav-logo" viewBox="17 19.34 66 66" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="currentColor"/>
+        <ellipse cx="62" cy="38" rx="11" ry="14" fill="#C3DC93" transform="rotate(-30 62 38)"/>
+      </svg>
+      <span class="nav-word">UPPERRIGHT<sup>®</sup></span>
+    </a>
+    <nav class="nav-links">
+      <a href="about.html" data-cursor data-i18n="nav.about">Who We Are</a>
+      <a href="#services" data-cursor data-i18n="nav.services">What We Do</a>
+      <a href="projects.html" data-cursor data-i18n="nav.work">Work</a>
+      <a href="#ai" data-cursor data-i18n="nav.ai">AI</a>
+      <a href="#contact" data-cursor data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="lang-toggle" id="lang-toggle" data-cursor aria-label="Switch language">
+        <span class="lt-en">EN</span><span class="lt-sep">/</span><span class="lt-zh">中</span>
+      </button>
+      <a class="nav-cta" href="#contact" data-cursor><span data-i18n="nav.talk">Let's talk</span><i class="nc-dot"></i></a>
+      <button class="menu-btn" id="menu-btn" data-cursor aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div class="mmenu" id="mmenu">
+    <nav class="mmenu-links">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="about.html" data-i18n="nav.about">About Us</a>
+      <a href="projects.html" data-i18n="nav.projects">Projects</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="mmenu-foot"><span>bd@upperright.group</span><span>Beijing, CN</span></div>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero-head">
+        <p class="hero-statement" data-i18n="hero.statement">We craft brand stories through creative planning, film & AI-native production</p>
+      </div>
+      <div class="hero-card-wrap">
+        <div class="hero-card" id="hero-card">
+          <div class="hslides" id="hslides">
+            <div class="hslide">
+              <canvas id="hero3d"></canvas>
+              <div class="hero-inner">
+                <h1 class="hero-title" aria-label="Ideas crafted to hit">
+                  <span class="ht-line"><span class="ht-word" data-i18n="hero.l1">IDEAS</span></span>
+                  <span class="ht-line"><span class="ht-word ht-outline" data-i18n="hero.l2">CRAFTED</span></span>
+                  <span class="ht-line"><span class="ht-word" data-i18n="hero.l3">TO HIT<em class="ht-dot">.</em></span></span>
+                </h1>
+              </div>
+            </div>
+            <div class="hslide hslide-case" data-cursor-view onclick="location.href='projects.html'">
+              <img src="assets/img/placeholder.png" alt="POP MART — Let's POP Cheers!" />
+              <div class="hs-info">
+                <span class="hs-kicker" data-i18n="hero.caseKicker">Featured Case</span>
+                <h2 class="hs-title">POP MART <span class="wc-x">×</span> Let's POP Cheers!</h2>
+                <p class="hs-sub" data-i18n="hero.case1">AI felt-wool universe × live-action — theme film</p>
+              </div>
+            </div>
+            <div class="hslide hslide-case" data-cursor-view onclick="location.href='projects.html'">
+              <img src="assets/img/placeholder.png" alt="ROBOROCK — CES & QREVO" />
+              <div class="hs-info">
+                <span class="hs-kicker" data-i18n="hero.caseKicker">Featured Case</span>
+                <h2 class="hs-title">ROBOROCK <span class="wc-x">×</span> CES & QREVO</h2>
+                <p class="hs-sub" data-i18n="hero.case2">Product launch KV & global show visuals</p>
+              </div>
+            </div>
+          </div>
+          <button class="hnav hnav-prev" id="hnav-prev" data-cursor aria-label="Previous">←</button>
+          <button class="hnav hnav-next" id="hnav-next" data-cursor aria-label="Next">→</button>
+          <div class="hdots" id="hdots"><span class="active"></span><span></span><span></span></div>
+        </div>
+        <div class="cross-row" aria-hidden="true">
+          <span>+</span><span>+</span><span class="cr-label" data-i18n="hero.scroll">SCROLL TO EXPLORE</span><span>+</span><span>+</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INTRO STATEMENT ============ -->
+    <section class="intro" id="studio-intro">
+      <p class="intro-eyebrow"><span class="dot"></span><span data-i18n="intro.eyebrow">About the studio</span></p>
+      <h2 class="intro-text" id="intro-text" data-i18n="intro.text">UPPERRIGHT is a boutique creative studio integrating creative planning and content production. We master the full pipeline of film and print — and we build at the frontier of AI × live-action hybrid production.</h2>
+      <div class="intro-cols">
+        <div class="intro-tags">
+          <div class="intro-tag"><span class="it-num">01</span><span data-i18n="intro.t1">Full-pipeline control</span></div>
+          <div class="intro-tag"><span class="it-num">02</span><span data-i18n="intro.t2">AI-native production</span></div>
+          <div class="intro-tag"><span class="it-num">03</span><span data-i18n="intro.t3">Efficiency × Aesthetics</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SHOWREEL ============ -->
+    <section class="reel" id="reel">
+      <div class="reel-pin" id="reel-pin">
+        <div class="reel-copy" id="reel-copy">
+          <p class="intro-eyebrow"><span class="dot"></span><span data-i18n="reel.eyebrow">Our showreel</span></p>
+          <p class="reel-text" data-i18n="reel.text">One reel, every craft — film, design and AI-native production, cut together. Keep scrolling to let it take over.</p>
+          <a class="pill" href="#work" data-cursor><i class="pill-dot"></i><span data-i18n="reel.btn">See the work</span></a>
+        </div>
+        <div class="reel-card" id="reel-card" data-cursor-view>
+          <img src="assets/img/placeholder.png" alt="UPPERRIGHT showreel" />
+          <div class="reel-tint"></div>
+        </div>
+        <div class="reel-words" aria-hidden="true">
+          <span class="rw rw-l" data-i18n="reel.play">PLAY</span>
+          <span class="rw-btn"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+          <span class="rw rw-r" data-i18n="reel.reel">REEL</span>
+        </div>
+        <div class="cross-corners" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="work" id="work">
+      <div class="sec-head">
+        <h2 class="sec-title"><span data-i18n="work.title">Selected Work</span></h2>
+        <p class="sec-note" data-i18n="work.note">A selection of campaigns, films and visuals created for ambitious brands.</p>
+      </div>
+      <div class="work-grid">
+
+        <a class="wcard" href="#contact" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="POP MART — Let's POP Cheers!" /></div>
+          <span class="wc-tags">AI × FILM · CAMPAIGN · 2025</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>POP MART · Let's POP Cheers!</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Lenovo Tech World" /></div>
+          <span class="wc-tags">TVC · BRAND · EMPLOYER</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>LENOVO · Tech World & 40th</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Roborock CES" /></div>
+          <span class="wc-tags">KV · CGI · LAUNCH</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>ROBOROCK · CES & QREVO</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Li-Ning BadFive" /></div>
+          <span class="wc-tags">CAMPAIGN · FILM · STREET</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>LI-NING · BadFive</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Lexus x Aranya" /></div>
+          <span class="wc-tags">INTERVIEW · FILM · CULTURE</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>LEXUS · Aranya Series</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Montblanc" /></div>
+          <span class="wc-tags">TVC · LUXURY · FRAGRANCE</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>MONTBLANC · Explorer</span></h3>
+        </a>
+
+      </div>
+      <div class="work-more"><a class="pill" href="projects.html" data-cursor><i class="pill-dot"></i><span data-i18n="work.more">See all projects</span></a></div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="services" id="services">
+      <div class="sec-head">
+        <h2 class="sec-title"><span data-i18n="services.title">What We Do</span></h2>
+        <span class="sec-count">( 3 )</span>
+      </div>
+      <div class="svc-list">
+        <div class="svc-row" data-cursor>
+          <span class="svc-num">01</span>
+          <h3 class="svc-name" data-i18n="services.s1">Creative Planning</h3>
+          <p class="svc-desc" data-i18n="services.s1d">Integrated marketing strategy · product campaigns · branded content planning</p>
+          <span class="svc-arrow">↗</span>
+        </div>
+        <div class="svc-row" data-cursor>
+          <span class="svc-num">02</span>
+          <h3 class="svc-name" data-i18n="services.s2">TVC Production</h3>
+          <p class="svc-desc" data-i18n="services.s2d">Brand films · celebrity & product films · interviews · viral creative films</p>
+          <span class="svc-arrow">↗</span>
+        </div>
+        <div class="svc-row" data-cursor>
+          <span class="svc-num">03</span>
+          <h3 class="svc-name" data-i18n="services.s3">AI Content</h3>
+          <p class="svc-desc" data-i18n="services.s3d">AI theme films & visuals · AI × live-action hybrid · AI character & world design</p>
+          <span class="svc-arrow">↗</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AI NATIVE ============ -->
+    <section class="ai" id="ai">
+      <div class="ai-head">
+        <p class="intro-eyebrow"><span class="dot"></span><span data-i18n="ai.eyebrow">AI-native production</span></p>
+        <h2 class="ai-title" data-i18n="ai.title">AI is not a tool we use. It's the production line itself.</h2>
+        <p class="ai-sub" data-i18n="ai.sub">From storyboard to final composite, every stage of our pipeline runs with AI-capable hands on it — directed by people who care about every frame.</p>
+      </div>
+      <div class="ai-flow" id="ai-flow">
+        <div class="ai-step"><span class="as-num">01</span><h4 data-i18n="ai.f1">Concept</h4><p data-i18n="ai.f1d">Planner / Creative Director</p></div>
+        <div class="ai-step"><span class="as-num">02</span><h4 data-i18n="ai.f2">AI Visual</h4><p data-i18n="ai.f2d">AI Art Direction</p></div>
+        <div class="ai-step"><span class="as-num">03</span><h4 data-i18n="ai.f3">AI Shots</h4><p data-i18n="ai.f3d">AI Director / Keyframe Design</p></div>
+        <div class="ai-step"><span class="as-num">04</span><h4 data-i18n="ai.f4">Generation</h4><p data-i18n="ai.f4d">Filming / AI Production</p></div>
+        <div class="ai-step"><span class="as-num">05</span><h4 data-i18n="ai.f5">AI Post</h4><p data-i18n="ai.f5d">Post / VFX</p></div>
+        <div class="ai-step"><span class="as-num">06</span><h4 data-i18n="ai.f6">Delivery</h4><p data-i18n="ai.f6d">Producer</p></div>
+      </div>
+    </section>
+
+    <!-- ============ CLIENTS ============ -->
+    <section class="clients" id="clients">
+      <p class="clients-label" data-i18n="clients.label">Brands we've worked with</p>
+      <div class="marquee m1"><div class="marquee-track">
+        <span>POP MART</span><span>LENOVO</span><span>ROBOROCK</span><span>LI-NING</span><span>LEXUS</span><span>MONTBLANC</span><span>VOLVO</span>
+        <span>POP MART</span><span>LENOVO</span><span>ROBOROCK</span><span>LI-NING</span><span>LEXUS</span><span>MONTBLANC</span><span>VOLVO</span>
+      </div></div>
+      <div class="marquee m2"><div class="marquee-track">
+        <span>HP</span><span>DIDI</span><span>YILI</span><span>LUZHOU LAOJIAO 1573</span><span>COLMO</span><span>ARCFOX</span><span>BTV</span>
+        <span>HP</span><span>DIDI</span><span>YILI</span><span>LUZHOU LAOJIAO 1573</span><span>COLMO</span><span>ARCFOX</span><span>BTV</span>
+      </div></div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <canvas id="contact3d" aria-hidden="true"></canvas>
+      <div class="contact-inner">
+        <p class="contact-kicker" data-i18n="contact.kicker">Is your brand story ready to hit?</p>
+        <a class="contact-big" href="mailto:bd@upperright.group" data-cursor-view>
+          <span class="cb-line" data-i18n="contact.l1">LET'S WORK</span>
+          <span class="cb-line cb-green" data-i18n="contact.l2">TOGETHER</span>
+        </a>
+      </div>
+      <div class="contact-cols">
+        <div class="cc">
+          <span class="cc-label">Email</span>
+          <a href="mailto:bd@upperright.group" data-cursor>bd@upperright.group</a>
+        </div>
+        <div class="cc">
+          <span class="cc-label" data-i18n="contact.addrLabel">Studio</span>
+          <p data-i18n="contact.addr">Bldg 2-305, Shuangshuyun Cultural Industry Park, Heizhuanghu, Chaoyang, Beijing</p>
+        </div>
+        <div class="cc">
+          <span class="cc-label" data-i18n="contact.followLabel">Elsewhere</span>
+          <p>WeChat · RED · Vimeo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <span>© 2026 UPPERRIGHT 东区一角</span>
+      <span data-i18n="footer.tag">Made in the upper right corner.</span>
+      <a href="#top" data-cursor data-i18n="footer.top">Back to top ↑</a>
+    </footer>
+
+  </main>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script type="module" src="js/hero3d.js"></script>
+  <script type="module" src="js/tube.js"></script>
+  <script type="module" src="js/contact3d.js"></script>
+  <script src="js/trail.js"></script>
+</body>
+</html>

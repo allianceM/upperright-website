@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — UPPERRIGHT 东区一角</title>
+  <meta name="description" content="UPPERRIGHT 东区一角 is a boutique creative & production studio in Beijing — strategy, creative, production and AI-native expertise." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./js/vendor/three.module.min.js",
+      "cannon-es": "./js/vendor/cannon-es.js"
+    }
+  }
+  </script>
+</head>
+<body class="lang-en" data-page="about">
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader">
+    <div class="loader-stage">
+      <svg class="loader-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path id="loader-mouth" d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="#F4F6F2"/>
+      </svg>
+      <div class="loader-dots" id="loader-dots">
+        <span class="ldot"></span><span class="ldot"></span><span class="ldot"></span>
+        <span class="ldot"></span><span class="ldot"></span>
+      </div>
+    </div>
+    <div class="loader-meta">
+      <span class="loader-word">UPPERRIGHT</span>
+      <span class="loader-pct" id="loader-pct">0</span>
+    </div>
+  </div>
+
+  <!-- ============ FIXED CANVASES ============ -->
+  <canvas id="tube-canvas" aria-hidden="true"></canvas>
+  <canvas id="trail-canvas" aria-hidden="true"></canvas>
+
+  <!-- ============ CUSTOM CURSOR ============ -->
+  <div class="cursor" id="cursor"><span class="cursor-dot"></span></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a class="nav-brand" href="index.html" data-cursor>
+      <svg class="nav-logo" viewBox="17 19.34 66 66" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="currentColor"/>
+        <ellipse cx="62" cy="38" rx="11" ry="14" fill="#C3DC93" transform="rotate(-30 62 38)"/>
+      </svg>
+      <span class="nav-word">UPPERRIGHT<sup>®</sup></span>
+    </a>
+    <nav class="nav-links">
+      <a href="about.html" class="nl-active" data-cursor data-i18n="nav.about">Who We Are</a>
+      <a href="index.html#services" data-cursor data-i18n="nav.services">What We Do</a>
+      <a href="projects.html" data-cursor data-i18n="nav.work">Work</a>
+      <a href="index.html#ai" data-cursor data-i18n="nav.ai">AI</a>
+      <a href="#contact" data-cursor data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="lang-toggle" id="lang-toggle" data-cursor aria-label="Switch language">
+        <span class="lt-en">EN</span><span class="lt-sep">/</span><span class="lt-zh">中</span>
+      </button>
+      <a class="nav-cta" href="#contact" data-cursor><span data-i18n="nav.talk">Let's talk</span><i class="nc-dot"></i></a>
+      <button class="menu-btn" id="menu-btn" data-cursor aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div class="mmenu" id="mmenu">
+    <nav class="mmenu-links">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="about.html" data-i18n="nav.about">About Us</a>
+      <a href="projects.html" data-i18n="nav.projects">Projects</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="mmenu-foot"><span>bd@upperright.group</span><span>Beijing, CN</span></div>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ ABOUT HERO ============ -->
+    <section class="ahero" id="ahero">
+      <canvas id="about3d"></canvas>
+      <div class="ahero-lines">
+        <div class="al-left">
+          <span class="al-line"><em data-i18n="ahero.l1">WE ARE</em></span>
+          <span class="al-line"><em data-i18n="ahero.l2">东区一角</em></span>
+          <span class="al-line"><em data-i18n="ahero.l3">A BOUTIQUE CREATIVE</em></span>
+          <span class="al-line"><em data-i18n="ahero.l4">& PRODUCTION STUDIO</em></span>
+        </div>
+        <div class="al-right">
+          <span class="al-line"><em data-i18n="ahero.r1">CRAFTING STORIES</em></span>
+          <span class="al-line"><em data-i18n="ahero.r2">THAT HIT</em></span>
+        </div>
+      </div>
+      <div class="ahero-mark" aria-hidden="true">UPPERRIGHT</div>
+      <div class="cross-row" aria-hidden="true">
+        <span>+</span><span>+</span><span class="cr-label" data-i18n="hero.scroll">SCROLL TO EXPLORE</span><span>+</span><span>+</span>
+      </div>
+    </section>
+
+    <!-- ============ TEAM ============ -->
+    <section class="team" id="team">
+      <div class="sec-head">
+        <h2 class="sec-title"><span data-i18n="team.title">The Team</span></h2>
+        <p class="sec-note" data-i18n="team.note">One creative production process — disciplines combined, ideas carried from concept to delivery.</p>
+      </div>
+      <p class="team-intro" data-i18n="team.intro">We are planners, directors, designers and producers who work as one unit. Every project runs through a single pipeline, so ideas keep their sharpness from the first deck to the final frame.</p>
+      <div class="studio-grid">
+        <div class="st-cell"><h4 data-i18n="studio.g1">Creative & Planning</h4><p data-i18n="studio.g1d">Creative directors · content planners</p></div>
+        <div class="st-cell"><h4 data-i18n="studio.g2">Direction</h4><p data-i18n="studio.g2d">Live-action directors · AI directors</p></div>
+        <div class="st-cell"><h4 data-i18n="studio.g3">Visual Design</h4><p data-i18n="studio.g3d">Art directors · visual & motion designers</p></div>
+        <div class="st-cell"><h4 data-i18n="studio.g4">Production Mgmt</h4><p data-i18n="studio.g4d">Producers · on-set & post producers</p></div>
+        <div class="st-cell"><h4 data-i18n="studio.g5">Post-Production</h4><p data-i18n="studio.g5d">Edit · color · VFX · music & sound</p></div>
+        <div class="st-cell st-cell-logo"><svg viewBox="17 19.34 66 66" xmlns="http://www.w3.org/2000/svg"><path d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="currentColor"/><ellipse cx="62" cy="38" rx="11" ry="14" fill="#C3DC93" transform="rotate(-30 62 38)"/></svg></div>
+      </div>
+    </section>
+
+    <!-- ============ BRANDS ============ -->
+    <section class="brands" id="brands">
+      <div class="marquee m1"><div class="marquee-track">
+        <span>BRANDS</span><span>WE</span><span>WORK</span><span>WITH</span><span>·</span>
+        <span>BRANDS</span><span>WE</span><span>WORK</span><span>WITH</span><span>·</span>
+        <span>BRANDS</span><span>WE</span><span>WORK</span><span>WITH</span><span>·</span>
+      </div></div>
+      <p class="brands-note" data-i18n="brands.note">Trusted by global brands, tech leaders and forward-thinking teams.</p>
+      <div class="brand-wall">
+        <span>POP MART</span><span>LENOVO</span><span>ROBOROCK</span><span>LI-NING</span>
+        <span>LEXUS</span><span>MONTBLANC</span><span>VOLVO</span><span>HP</span>
+        <span>DIDI</span><span>YILI</span><span>LUZHOU LAOJIAO 1573</span><span>COLMO</span>
+        <span>ARCFOX</span><span>BTV</span><span>RE-TROS</span><span class="bw-more" data-i18n="brands.more">+ MORE</span>
+      </div>
+    </section>
+
+    <!-- ============ EXPERTISE ============ -->
+    <section class="expertise" id="expertise">
+      <div class="sec-head">
+        <h2 class="sec-title"><span data-i18n="exp.title">Expertise</span></h2>
+        <span class="sec-count">( 4 )</span>
+      </div>
+      <p class="exp-lead" data-i18n="exp.lead">Multidisciplinary expertise across strategy, creative, production — and AI.</p>
+      <div class="exp-pin" id="exp-pin">
+        <div class="exp-stage" id="exp-stage">
+
+          <div class="pcard"><div class="pcard-inner">
+            <div class="pcard-back">
+              <svg viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <rect x="10" y="10" width="280" height="400" rx="12" fill="none" stroke="#C3DC93" stroke-width="1.5" opacity="0.8"/>
+                <rect x="22" y="22" width="256" height="376" rx="8" fill="none" stroke="#C3DC93" stroke-width="1" stroke-dasharray="3 5" opacity="0.5"/>
+                <g stroke="#C3DC93" stroke-width="1" opacity="0.35">
+                  <line x1="22" y1="60" x2="60" y2="22"/><line x1="22" y1="80" x2="80" y2="22"/><line x1="22" y1="100" x2="100" y2="22"/>
+                  <line x1="278" y1="360" x2="240" y2="398"/><line x1="278" y1="340" x2="220" y2="398"/><line x1="278" y1="320" x2="200" y2="398"/>
+                </g>
+                <g fill="#C3DC93" opacity="0.9">
+                  <circle cx="150" cy="48" r="3"/><circle cx="150" cy="372" r="3"/>
+                  <circle cx="46" cy="210" r="3"/><circle cx="254" cy="210" r="3"/>
+                </g>
+                <rect x="105" y="165" width="90" height="90" transform="rotate(45 150 210)" fill="none" stroke="#C3DC93" stroke-width="1.2" opacity="0.7"/>
+                <g transform="translate(150 210) scale(0.62) translate(-50 -52.5)">
+                  <path d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="#F4F6F2"/>
+                  <ellipse cx="62" cy="38" rx="11" ry="14" fill="#C3DC93" transform="rotate(-30 62 38)"/>
+                </g>
+                <text x="150" y="108" text-anchor="middle" fill="#C3DC93" font-size="11" letter-spacing="6" opacity="0.7" font-family="sans-serif">UPPERRIGHT</text>
+                <text x="150" y="322" text-anchor="middle" fill="#C3DC93" font-size="11" letter-spacing="6" opacity="0.7" font-family="sans-serif" transform="rotate(180 150 316)">UPPERRIGHT</text>
+              </svg>
+            </div>
+            <div class="pcard-front">
+              <div class="pc-row pc-head"><h3 data-i18n="exp.s1">Strategy</h3><span class="pc-letter">S</span></div>
+              <ul>
+                <li data-i18n="exp.s1a">Integrated marketing strategy</li>
+                <li data-i18n="exp.s1b">Product campaign strategy</li>
+                <li data-i18n="exp.s1c">Branded content planning</li>
+                <li data-i18n="exp.s1d">Insight & research</li>
+              </ul>
+              <div class="pc-row pc-foot"><h3 data-i18n="exp.s1">Strategy</h3><span class="pc-letter">S</span></div>
+            </div>
+          </div></div>
+
+          <div class="pcard"><div class="pcard-inner">
+            <div class="pcard-back">
+              <svg viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <rect x="10" y="10" width="280" height="400" rx="12" fill="none" stroke="#C3DC93" stroke-width="1.5" opacity="0.8"/>
+                <rect x="22" y="22" width="256" height="376" rx="8" fill="none" stroke="#C3DC93" stroke-width="1" stroke-dasharray="3 5" opacity="0.5"/>
+                <g stroke="#C3DC93" stroke-width="1" opacity="0.35">
+                  <line x1="22" y1="60" x2="60" y2="22"/><line x1="22" y1="80" x2="80" y2="22"/><line x1="22" y1="100" x2="100" y2="22"/>
+                  <line x1="278" y1="360" x2="240" y2="398"/><line x1="278" y1="340" x2="220" y2="398"/><line x1="278" y1="320" x2="200" y2="398"/>
+                </g>
+                <g fill="#C3DC93" opacity="0.9">
+                  <circle cx="150" cy="48" r="3"/><circle cx="150" cy="372" r="3"/>
+                  <circle cx="46" cy="210" r="3"/><circle cx="254" cy="210" r="3"/>
+                </g>
+                <rect x="105" y="165" width="90" height="90" transform="rotate(45 150 210)" fill="none" stroke="#C3DC93" stroke-width="1.2" opacity="0.7"/>
+                <g transform="translate(150 210) scale(0.62) translate(-50 -52.5)">
+                  <path d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="#F4F6F2"/>
+                  <ellipse cx="62" cy="38" rx="11" ry="14" fill="#C3DC93" transform="rotate(-30 62 38)"/>
+                </g>
+                <text x="150" y="108" text-anchor="middle" fill="#C3DC93" font-size="11" letter-spacing="6" opacity="0.7" font-family="sans-serif">UPPERRIGHT</text>
+                <text x="150" y="322" text-anchor="middle" fill="#C3DC93" font-size="11" letter-spacing="6" opacity="0.7" font-family="sans-serif" transform="rotate(180 150 316)">UPPERRIGHT</text>
+              </svg>
+            </div>
+            <div class="pcard-front">
+              <div class="pc-row pc-head"><h3 data-i18n="exp.s2">Creative</h3><span class="pc-letter">C</span></div>
+              <ul>
+                <li data-i18n="exp.s2a">Creative concept</li>
+                <li data-i18n="exp.s2b">Art direction</li>
+                <li data-i18n="exp.s2c">KV & graphic design</li>
+                <li data-i18n="exp.s2d">Motion design</li>
+              </ul>
+              <div class="pc-row pc-foot"><h3 data-i18n="exp.s2">Creative</h3><span class="pc-letter">C</span></div>
+            </div>
+          </div></div>
+
+          <div class="pcard"><div class="pcard-inner">
+            <div class="pcard-back">
+              <svg viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <rect x="10" y="10" width="280" height="400" rx="12" fill="none" stroke="#C3DC93" stroke-width="1.5" opacity="0.8"/>
+                <rect x="22" y="22" width="256" height="376" rx="8" fill="none" stroke="#C3DC93" stroke-width="1" stroke-dasharray="3 5" opacity="0.5"/>
+                <g stroke="#C3DC93" stroke-width="1" opacity="0.35">
+                  <line x1="22" y1="60" x2="60" y2="22"/><line x1="22" y1="80" x2="80" y2="22"/><line x1="22" y1="100" x2="100" y2="22"/>
+                  <line x1="278" y1="360" x2="240" y2="398"/><line x1="278" y1="340" x2="220" y2="398"/><line x1="278" y1="320" x2="200" y2="398"/>
+                </g>
+                <g fill="#C3DC93" opacity="0.9">
+                  <circle cx="150" cy="48" r="3"/><circle cx="150" cy="372" r="3"/>
+                  <circle cx="46" cy="210" r="3"/><circle cx="254" cy="210" r="3"/>
+                </g>
+                <rect x="105" y="165" width="90" height="90" transform="rotate(45 150 210)" fill="none" stroke="#C3DC93" stroke-width="1.2" opacity="0.7"/>
+                <g transform="translate(150 210) scale(0.62) translate(-50 -52.5)">
+                  <path d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="#F4F6F2"/>
+                  <ellipse cx="62" cy="38" rx="11" ry="14" fill="#C3DC93" transform="rotate(-30 62 38)"/>
+                </g>
+                <text x="150" y="108" text-anchor="middle" fill="#C3DC93" font-size="11" letter-spacing="6" opacity="0.7" font-family="sans-serif">UPPERRIGHT</text>
+                <text x="150" y="322" text-anchor="middle" fill="#C3DC93" font-size="11" letter-spacing="6" opacity="0.7" font-family="sans-serif" transform="rotate(180 150 316)">UPPERRIGHT</text>
+              </svg>
+            </div>
+            <div class="pcard-front">
+              <div class="pc-row pc-head"><h3 data-i18n="exp.s3">Production</h3><span class="pc-letter">P</span></div>
+              <ul>
+                <li data-i18n="exp.s3a">TVC & brand films</li>
+                <li data-i18n="exp.s3b">Celebrity & product films</li>
+                <li data-i18n="exp.s3c">Interview & documentary</li>
+                <li data-i18n="exp.s3d">On-set & post producing</li>
+              </ul>
+              <div class="pc-row pc-foot"><h3 data-i18n="exp.s3">Production</h3><span class="pc-letter">P</span></div>
+            </div>
+          </div></div>
+
+          <div class="pcard pcard-ai"><div class="pcard-inner">
+            <div class="pcard-back">
+              <svg viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <rect x="10" y="10" width="280" height="400" rx="12" fill="none" stroke="#C3DC93" stroke-width="1.5" opacity="0.8"/>
+                <rect x="22" y="22" width="256" height="376" rx="8" fill="none" stroke="#C3DC93" stroke-width="1" stroke-dasharray="3 5" opacity="0.5"/>
+                <g stroke="#C3DC93" stroke-width="1" opacity="0.35">
+                  <line x1="22" y1="60" x2="60" y2="22"/><line x1="22" y1="80" x2="80" y2="22"/><line x1="22" y1="100" x2="100" y2="22"/>
+                  <line x1="278" y1="360" x2="240" y2="398"/><line x1="278" y1="340" x2="220" y2="398"/><line x1="278" y1="320" x2="200" y2="398"/>
+                </g>
+                <g fill="#C3DC93" opacity="0.9">
+                  <circle cx="150" cy="48" r="3"/><circle cx="150" cy="372" r="3"/>
+                  <circle cx="46" cy="210" r="3"/><circle cx="254" cy="210" r="3"/>
+                </g>
+                <rect x="105" y="165" width="90" height="90" transform="rotate(45 150 210)" fill="none" stroke="#C3DC93" stroke-width="1.2" opacity="0.7"/>
+                <g transform="translate(150 210) scale(0.62) translate(-50 -52.5)">
+                  <path d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="#F4F6F2"/>
+                  <ellipse cx="62" cy="38" rx="11" ry="14" fill="#C3DC93" transform="rotate(-30 62 38)"/>
+                </g>
+                <text x="150" y="108" text-anchor="middle" fill="#C3DC93" font-size="11" letter-spacing="6" opacity="0.7" font-family="sans-serif">UPPERRIGHT</text>
+                <text x="150" y="322" text-anchor="middle" fill="#C3DC93" font-size="11" letter-spacing="6" opacity="0.7" font-family="sans-serif" transform="rotate(180 150 316)">UPPERRIGHT</text>
+              </svg>
+            </div>
+            <div class="pcard-front">
+              <div class="pc-row pc-head"><h3 data-i18n="exp.s4">AI-Native</h3><span class="pc-letter">AI</span></div>
+              <ul>
+                <li data-i18n="exp.s4a">AI visual & theme films</li>
+                <li data-i18n="exp.s4b">AI × live-action hybrid</li>
+                <li data-i18n="exp.s4c">AI character & world design</li>
+                <li data-i18n="exp.s4d">AI workflow R&D</li>
+              </ul>
+              <div class="pc-row pc-foot"><h3 data-i18n="exp.s4">AI-Native</h3><span class="pc-letter">AI</span></div>
+            </div>
+          </div></div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <canvas id="contact3d" aria-hidden="true"></canvas>
+      <div class="contact-inner">
+        <p class="contact-kicker" data-i18n="contact.kicker">Is your brand story ready to hit?</p>
+        <a class="contact-big" href="mailto:bd@upperright.group" data-cursor-view>
+          <span class="cb-line" data-i18n="contact.l1">LET'S WORK</span>
+          <span class="cb-line cb-green" data-i18n="contact.l2">TOGETHER</span>
+        </a>
+      </div>
+      <div class="contact-cols">
+        <div class="cc">
+          <span class="cc-label">Email</span>
+          <a href="mailto:bd@upperright.group" data-cursor>bd@upperright.group</a>
+        </div>
+        <div class="cc">
+          <span class="cc-label" data-i18n="contact.addrLabel">Studio</span>
+          <p data-i18n="contact.addr">Bldg 2-305, Shuangshuyun Cultural Industry Park, Heizhuanghu, Chaoyang, Beijing</p>
+        </div>
+        <div class="cc">
+          <span class="cc-label" data-i18n="contact.followLabel">Elsewhere</span>
+          <p>WeChat · RED · Vimeo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEXT PAGE ============ -->
+    <a class="next-page" href="projects.html" data-cursor>
+      <span class="np-kicker" data-i18n="next.keep">Keep scrolling to explore</span>
+      <span class="np-title" data-i18n="next.projects">OUR PROJECTS</span>
+      <span class="np-arrow">→</span>
+    </a>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <span>© 2026 UPPERRIGHT 东区一角</span>
+      <span data-i18n="footer.tag">Made in the upper right corner.</span>
+      <a href="#top" data-cursor data-i18n="footer.top">Back to top ↑</a>
+    </footer>
+
+  </main>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script type="module" src="js/about3d.js"></script>
+  <script type="module" src="js/tube.js"></script>
+  <script type="module" src="js/contact3d.js"></script>
+  <script src="js/trail.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — UPPERRIGHT 东区一角</title>
+  <meta name="description" content="Selected campaigns, films, KVs and AI-native work by UPPERRIGHT 东区一角." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./js/vendor/three.module.min.js",
+      "cannon-es": "./js/vendor/cannon-es.js"
+    }
+  }
+  </script>
+</head>
+<body class="lang-en" data-page="projects">
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader">
+    <div class="loader-stage">
+      <svg class="loader-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path id="loader-mouth" d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="#F4F6F2"/>
+      </svg>
+      <div class="loader-dots" id="loader-dots">
+        <span class="ldot"></span><span class="ldot"></span><span class="ldot"></span>
+        <span class="ldot"></span><span class="ldot"></span>
+      </div>
+    </div>
+    <div class="loader-meta">
+      <span class="loader-word">UPPERRIGHT</span>
+      <span class="loader-pct" id="loader-pct">0</span>
+    </div>
+  </div>
+
+  <!-- ============ FIXED CANVASES ============ -->
+  <canvas id="tube-canvas" aria-hidden="true"></canvas>
+  <canvas id="trail-canvas" aria-hidden="true"></canvas>
+
+  <!-- ============ CUSTOM CURSOR ============ -->
+  <div class="cursor" id="cursor"><span class="cursor-dot"></span></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a class="nav-brand" href="index.html" data-cursor>
+      <svg class="nav-logo" viewBox="17 19.34 66 66" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="currentColor"/>
+        <ellipse cx="62" cy="38" rx="11" ry="14" fill="#C3DC93" transform="rotate(-30 62 38)"/>
+      </svg>
+      <span class="nav-word">UPPERRIGHT<sup>®</sup></span>
+    </a>
+    <nav class="nav-links">
+      <a href="about.html" data-cursor data-i18n="nav.about">Who We Are</a>
+      <a href="index.html#services" data-cursor data-i18n="nav.services">What We Do</a>
+      <a href="projects.html" class="nl-active" data-cursor data-i18n="nav.work">Work</a>
+      <a href="index.html#ai" data-cursor data-i18n="nav.ai">AI</a>
+      <a href="#contact" data-cursor data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="lang-toggle" id="lang-toggle" data-cursor aria-label="Switch language">
+        <span class="lt-en">EN</span><span class="lt-sep">/</span><span class="lt-zh">中</span>
+      </button>
+      <a class="nav-cta" href="#contact" data-cursor><span data-i18n="nav.talk">Let's talk</span><i class="nc-dot"></i></a>
+      <button class="menu-btn" id="menu-btn" data-cursor aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div class="mmenu" id="mmenu">
+    <nav class="mmenu-links">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="about.html" data-i18n="nav.about">About Us</a>
+      <a href="projects.html" data-i18n="nav.projects">Projects</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="mmenu-foot"><span>bd@upperright.group</span><span>Beijing, CN</span></div>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ PROJECTS HERO ============ -->
+    <section class="phead" id="phead">
+      <p class="intro-eyebrow"><span class="dot"></span><span data-i18n="proj.eyebrow">All work</span></p>
+      <h1 class="phead-title"><span data-i18n="proj.title">PROJECTS</span></h1>
+      <p class="phead-note" data-i18n="proj.note">Campaigns, films, KVs and AI-native work for ambitious brands — replace these stills with the real cases as we go.</p>
+      <div class="filters" id="filters">
+        <button class="pill pill-filter active" data-cat="all" data-cursor><span data-i18n="proj.fAll">All</span></button>
+        <button class="pill pill-filter" data-cat="film" data-cursor><span data-i18n="proj.fFilm">Film / TVC</span></button>
+        <button class="pill pill-filter" data-cat="kv" data-cursor><span data-i18n="proj.fKv">KV / Visual</span></button>
+        <button class="pill pill-filter" data-cat="ai" data-cursor><span data-i18n="proj.fAi">AI</span></button>
+        <button class="pill pill-filter" data-cat="campaign" data-cursor><span data-i18n="proj.fCamp">Campaign</span></button>
+      </div>
+    </section>
+
+    <!-- ============ GRID ============ -->
+    <section class="plist" id="plist">
+      <div class="work-grid" id="pgrid">
+
+        <a class="wcard" href="#contact" data-cat="ai campaign" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="POP MART" /></div>
+          <span class="wc-tags">AI × FILM · CAMPAIGN · 2025</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>POP MART · Let's POP Cheers!</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="film" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Lenovo Tech World" /></div>
+          <span class="wc-tags">TVC · LAUNCH</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>LENOVO · Tech World</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="film campaign" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Lenovo 40th" /></div>
+          <span class="wc-tags">EMPLOYER BRAND · 40TH</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>LENOVO · 40th Anniversary</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="campaign" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Lenovo Asian Games" /></div>
+          <span class="wc-tags">CAMPAIGN · SPORTS</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>LENOVO × Asian Games</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="kv" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Roborock QREVO" /></div>
+          <span class="wc-tags">KV · CGI · LAUNCH</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>ROBOROCK · QREVO Launch KV</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="kv" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Roborock CES" /></div>
+          <span class="wc-tags">KV · GLOBAL SHOW</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>ROBOROCK · CES</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="campaign film" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Li-Ning BadFive" /></div>
+          <span class="wc-tags">CAMPAIGN · STREETBALL</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>LI-NING · BadFive 24Q1 POP</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="campaign" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Li-Ning Mister Cartoon" /></div>
+          <span class="wc-tags">COLLAB · CULTURE</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>LI-NING × Mister Cartoon</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="film" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Lexus Aranya" /></div>
+          <span class="wc-tags">INTERVIEW · CULTURE</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>LEXUS · Aranya Series</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="film" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Montblanc" /></div>
+          <span class="wc-tags">TVC · LUXURY</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>MONTBLANC · Explorer</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="film" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Luzhou Laojiao" /></div>
+          <span class="wc-tags">TVC · CELEBRITY</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>LUZHOU LAOJIAO 1573 × Wang Qianyuan</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="film" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Volvo S90" /></div>
+          <span class="wc-tags">TVC · AUTO</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>VOLVO S90 · Love & Life</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="campaign" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="Yili" /></div>
+          <span class="wc-tags">CAMPAIGN · FMCG</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>YILI · Changqing</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="campaign" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="JOJO" /></div>
+          <span class="wc-tags">CAMPAIGN · DRINKS</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>JOJO · Volcano Blood Orange</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="ai kv" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="DiDi" /></div>
+          <span class="wc-tags">AI · SOCIAL</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>DIDI · Global May Day</span></h3>
+        </a>
+
+        <a class="wcard" href="#contact" data-cat="ai" data-cursor-view>
+          <div class="wcard-media"><img src="assets/img/placeholder.png" alt="DiDi Zoo" /></div>
+          <span class="wc-tags">AI · ANIMATION</span>
+          <h3 class="wc-title"><i class="wc-arrow">→</i><span>DIDI × Guangxi Zoo · Dashu</span></h3>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <canvas id="contact3d" aria-hidden="true"></canvas>
+      <div class="contact-inner">
+        <p class="contact-kicker" data-i18n="contact.kicker">Is your brand story ready to hit?</p>
+        <a class="contact-big" href="mailto:bd@upperright.group" data-cursor-view>
+          <span class="cb-line" data-i18n="contact.l1">LET'S WORK</span>
+          <span class="cb-line cb-green" data-i18n="contact.l2">TOGETHER</span>
+        </a>
+      </div>
+      <div class="contact-cols">
+        <div class="cc">
+          <span class="cc-label">Email</span>
+          <a href="mailto:bd@upperright.group" data-cursor>bd@upperright.group</a>
+        </div>
+        <div class="cc">
+          <span class="cc-label" data-i18n="contact.addrLabel">Studio</span>
+          <p data-i18n="contact.addr">Bldg 2-305, Shuangshuyun Cultural Industry Park, Heizhuanghu, Chaoyang, Beijing</p>
+        </div>
+        <div class="cc">
+          <span class="cc-label" data-i18n="contact.followLabel">Elsewhere</span>
+          <p>WeChat · RED · Vimeo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEXT PAGE ============ -->
+    <a class="next-page" href="about.html" data-cursor>
+      <span class="np-kicker" data-i18n="next.keep">Keep scrolling to explore</span>
+      <span class="np-title" data-i18n="next.about">ABOUT US</span>
+      <span class="np-arrow">→</span>
+    </a>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <span>© 2026 UPPERRIGHT 东区一角</span>
+      <span data-i18n="footer.tag">Made in the upper right corner.</span>
+      <a href="#top" data-cursor data-i18n="footer.top">Back to top ↑</a>
+    </footer>
+
+  </main>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script type="module" src="js/tube.js"></script>
+  <script type="module" src="js/contact3d.js"></script>
+  <script src="js/trail.js"></script>
+</body>
+</html>
