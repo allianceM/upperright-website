@@ -89,6 +89,7 @@ window.I18N = {
     'ai.f4': 'Generation', 'ai.f4d': 'Filming / AI Production',
     'ai.f5': 'AI Post', 'ai.f5d': 'Post / VFX',
     'ai.f6': 'Delivery', 'ai.f6d': 'Producer',
+    'ai.more': 'Explore the AI pipeline',
 
     'clients.label': "Brands we've worked with",
 
@@ -199,6 +200,7 @@ window.I18N = {
     'ai.f4': 'AI 实拍融合', 'ai.f4d': '摄影 / AI 后期制片',
     'ai.f5': 'AI 后期合成', 'ai.f5d': '后期 / VFX',
     'ai.f6': '终审与交付', 'ai.f6d': '制片人',
+    'ai.more': '深入了解 AI 生产线',
 
     'clients.label': '我们服务过的品牌',
 
