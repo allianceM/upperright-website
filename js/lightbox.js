@@ -1,8 +1,10 @@
 /* Video lightbox.
    - data-vimeo="ID"            → Vimeo player
    - data-youtube="ID"          → YouTube player
-   - data-playlist='[{"t":"Title","v":"vimeoId"},{"t":"Title","y":"youtubeId"}]'
-                                → multi-video case with switcher tabs
+   - data-mp4="path.mp4"        → self-hosted video player
+   - data-playlist='[{"t":"Title","v":"vimeoId"},{"t":"Title","y":"youtubeId"},
+                     {"t":"Title","mp4":"path.mp4"},{"t":"01","img":"path.jpg"}]'
+                                → multi-item case (videos and/or images) with switcher tabs
    Cards without these attributes keep their original behavior. */
 (function () {
   var overlay = document.createElement('div');
@@ -18,15 +20,20 @@
   var frame = overlay.querySelector('.vlb-frame');
   var tabs = overlay.querySelector('.vlb-tabs');
 
-  function srcFor(item) {
-    if (item.v) return 'https://player.vimeo.com/video/' + item.v + '?autoplay=1&title=0&byline=0&portrait=0';
-    if (item.y) return 'https://www.youtube.com/embed/' + item.y + '?autoplay=1&rel=0&modestbranding=1';
-    return '';
-  }
-
   function play(item) {
+    if (item.img) {
+      frame.innerHTML = '<img src="' + item.img + '" alt="" />';
+      return;
+    }
+    if (item.mp4) {
+      frame.innerHTML = '<video src="' + item.mp4 + '" controls autoplay playsinline></video>';
+      return;
+    }
+    var src = '';
+    if (item.v) src = 'https://player.vimeo.com/video/' + item.v + '?autoplay=1&title=0&byline=0&portrait=0';
+    else if (item.y) src = 'https://www.youtube.com/embed/' + item.y + '?autoplay=1&rel=0&modestbranding=1';
     frame.innerHTML =
-      '<iframe src="' + srcFor(item) + '" ' +
+      '<iframe src="' + src + '" ' +
       'allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
   }
 
@@ -64,7 +71,7 @@
   });
 
   document.addEventListener('click', function (e) {
-    var el = e.target.closest('[data-vimeo],[data-youtube],[data-playlist]');
+    var el = e.target.closest('[data-vimeo],[data-youtube],[data-mp4],[data-playlist]');
     if (!el) return;
     var list = [];
     var pl = el.getAttribute('data-playlist');
@@ -74,6 +81,8 @@
       list = [{ v: el.getAttribute('data-vimeo') }];
     } else if (el.getAttribute('data-youtube')) {
       list = [{ y: el.getAttribute('data-youtube') }];
+    } else if (el.getAttribute('data-mp4')) {
+      list = [{ mp4: el.getAttribute('data-mp4') }];
     }
     if (!list.length) return;
     e.preventDefault();
