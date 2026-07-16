@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project — UPPERRIGHT 东区一角</title>
+  <meta name="description" content="Selected work by UPPERRIGHT 东区一角 — creative planning, film and AI-native production." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="css/style.css?v=6" />
+</head>
+<body class="lang-en pj-body">
+
+  <!-- ============ NAV ============ -->
+  <header class="nav pj-nav">
+    <a class="nav-brand" href="index.html">
+      <svg class="nav-logo" viewBox="17 19.34 66 66" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="currentColor"/>
+        <ellipse cx="62" cy="38" rx="11" ry="14" fill="#C3DC93" transform="rotate(-30 62 38)"/>
+      </svg>
+      <span class="nav-word">UPPERRIGHT<sup>®</sup></span>
+    </a>
+    <a class="pj-back" href="projects.html">
+      <span class="pj-back-arrow" aria-hidden="true">←</span>
+      <span class="t-en">BACK</span><span class="t-zh">返回</span>
+    </a>
+    <div class="nav-right">
+      <button class="lang-toggle" id="pj-lang" aria-label="Switch language">
+        <span class="lt-en">EN</span><span class="lt-sep">/</span><span class="lt-zh">中</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="pj-main" id="pj-main">
+    <!-- rendered by script -->
+  </main>
+
+  <!-- ============ CONTACT / FOOTER ============ -->
+  <section class="pj-cta">
+    <p class="pj-cta-kicker"><span class="t-en">Is your brand story ready to hit?</span><span class="t-zh">你的品牌故事,准备好一击即中了吗?</span></p>
+    <a class="pj-cta-link" href="mailto:bd@upperright.group">
+      <span class="t-en">LET'S WORK TOGETHER</span><span class="t-zh">期待合作</span>
+    </a>
+  </section>
+  <footer class="footer pj-footer">
+    <span>© 2026 UPPERRIGHT 东区一角</span>
+    <a href="index.html"><span class="t-en">Back to home</span><span class="t-zh">回到首页</span></a>
+  </footer>
+
+  <script src="js/projects-data.js?v=1"></script>
+  <script>
+  (function () {
+    var slug = new URLSearchParams(location.search).get('p');
+    var P = window.PROJECTS || {};
+    var d = P[slug];
+    if (!d) { location.replace('projects.html'); return; }
+
+    document.title = d.brand + ' · ' + d.title + ' — UPPERRIGHT 东区一角';
+
+    function mediaHTML(m, isHero) {
+      var ratio = m.ratio || '16x9';
+      var inner = '';
+      if (m.img) {
+        inner = '<img src="' + m.img + '" alt="' + d.brand + ' — ' + d.title + '" loading="' + (isHero ? 'eager' : 'lazy') + '" />';
+        return '<div class="pj-media pj-img reveal">' + inner + '</div>';
+      }
+      if (m.mp4) {
+        inner = '<video src="' + m.mp4 + '" controls playsinline preload="metadata" poster="' + (d.cover || '') + '"></video>';
+      } else if (m.vimeo) {
+        inner = '<iframe src="https://player.vimeo.com/video/' + m.vimeo + '?title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+      } else if (m.youtube) {
+        inner = '<iframe src="https://www.youtube.com/embed/' + m.youtube + '?rel=0&modestbranding=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+      }
+      return '<div class="pj-media pj-ratio-' + ratio + ' reveal">' + inner + '</div>';
+    }
+
+    var hero = d.media[0];
+    var rest = d.media.slice(1);
+    var nxt = P[d.next];
+
+    var html = '';
+    html += '<section class="pj-hero reveal">' + mediaHTML(hero, true) + '</section>';
+    html += '<section class="pj-head">';
+    html += '<p class="pj-tags reveal">' + d.tags + '</p>';
+    html += '<h1 class="pj-title reveal">' + d.brand + ' <span class="pj-x">×</span> ' + d.title + '</h1>';
+    html += '<div class="pj-cols">';
+    html += '<div class="pj-desc reveal"><p class="t-en">' + d.desc_en + '</p><p class="t-zh">' + d.desc_zh + '</p></div>';
+    html += '<aside class="pj-meta reveal">';
+    html += '<div class="pj-meta-row"><span class="pj-meta-label"><span class="t-en">CLIENT</span><span class="t-zh">客户</span></span><span>' + d.client + '</span></div>';
+    html += '<div class="pj-meta-row"><span class="pj-meta-label"><span class="t-en">YEAR</span><span class="t-zh">年份</span></span><span>' + d.year + '</span></div>';
+    html += '<div class="pj-meta-row"><span class="pj-meta-label"><span class="t-en">SERVICES</span><span class="t-zh">服务内容</span></span><span>' + d.services.join('<br/>') + '</span></div>';
+    html += '</aside></div></section>';
+
+    if (rest.length) {
+      html += '<section class="pj-gallery">';
+      rest.forEach(function (m) { html += mediaHTML(m, false); });
+      html += '</section>';
+    }
+
+    if (nxt) {
+      html += '<a class="pj-next reveal" href="project.html?p=' + d.next + '">';
+      html += '<span class="pj-next-label"><span class="t-en">NEXT PROJECT</span><span class="t-zh">下一个项目</span></span>';
+      html += '<span class="pj-next-title">' + nxt.brand + ' × ' + nxt.title + ' <span class="pj-next-arrow">→</span></span>';
+      html += '<span class="pj-next-media"><img src="' + nxt.cover + '" alt="' + nxt.brand + '" loading="lazy"/></span>';
+      html += '</a>';
+    }
+
+    document.getElementById('pj-main').innerHTML = html;
+
+    /* language toggle */
+    var langBtn = document.getElementById('pj-lang');
+    var lang = 'en';
+    function apply(l) {
+      lang = l;
+      document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
+      document.body.classList.toggle('lang-zh', l === 'zh');
+      document.body.classList.toggle('lang-en', l === 'en');
+    }
+    langBtn.addEventListener('click', function () { apply(lang === 'en' ? 'zh' : 'en'); });
+
+    /* scroll reveals */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+  </script>
+</body>
+</html>
