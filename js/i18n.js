@@ -54,6 +54,7 @@ window.I18N = {
     'hero.caseKicker': 'Featured Case',
     'hero.case1': 'AI felt-wool universe × live-action — theme film',
     'hero.case2': 'Product launch KV & global show visuals',
+    'hero.case3': 'Global employer-brand film — what it means to work at a global company',
 
     'reel.play': 'PLAY',
     'reel.reel': 'REEL',
@@ -163,6 +164,7 @@ window.I18N = {
     'hero.caseKicker': '精选案例',
     'hero.case1': 'AI 羊毛毡视觉宇宙 × 实拍 — 主题影片',
     'hero.case2': '产品发布 KV 与全球展会视觉',
+    'hero.case3': '联想全球雇主品牌影片——在一家全球化公司工作意味着什么',
 
     'reel.play': 'PLAY',
     'reel.reel': 'REEL',
