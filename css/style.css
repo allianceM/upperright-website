@@ -875,3 +875,4 @@ section { position: relative; }
 .aip-feat-info{position:absolute;left:34px;bottom:30px}
 .aip-feat-info h3{font-size:clamp(22px,3vw,36px);margin:10px 0 0}
 @media (max-width:820px){.aip-steps,.aip-why-grid{grid-template-columns:1fr}}
+.brand-wall .bw-cell{display:flex;align-items:center}
