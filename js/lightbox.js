@@ -1,5 +1,9 @@
-/* Vimeo lightbox — cards with data-vimeo="VIDEOID" open an in-page player.
-   Cards without data-vimeo keep their original behavior. */
+/* Video lightbox.
+   - data-vimeo="ID"            → Vimeo player
+   - data-youtube="ID"          → YouTube player
+   - data-playlist='[{"t":"Title","v":"vimeoId"},{"t":"Title","y":"youtubeId"}]'
+                                → multi-video case with switcher tabs
+   Cards without these attributes keep their original behavior. */
 (function () {
   var overlay = document.createElement('div');
   overlay.className = 'vlb';
@@ -7,10 +11,44 @@
     '<div class="vlb-inner">' +
     '<button class="vlb-close" aria-label="Close">&times;</button>' +
     '<div class="vlb-frame"></div>' +
+    '<div class="vlb-tabs"></div>' +
     '</div>';
   document.body.appendChild(overlay);
 
   var frame = overlay.querySelector('.vlb-frame');
+  var tabs = overlay.querySelector('.vlb-tabs');
+
+  function srcFor(item) {
+    if (item.v) return 'https://player.vimeo.com/video/' + item.v + '?autoplay=1&title=0&byline=0&portrait=0';
+    if (item.y) return 'https://www.youtube.com/embed/' + item.y + '?autoplay=1&rel=0&modestbranding=1';
+    return '';
+  }
+
+  function play(item) {
+    frame.innerHTML =
+      '<iframe src="' + srcFor(item) + '" ' +
+      'allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+  }
+
+  function open(list) {
+    tabs.innerHTML = '';
+    if (list.length > 1) {
+      list.forEach(function (item, i) {
+        var b = document.createElement('button');
+        b.className = 'vlb-tab' + (i === 0 ? ' is-active' : '');
+        b.textContent = item.t || ('Video ' + (i + 1));
+        b.addEventListener('click', function () {
+          tabs.querySelectorAll('.vlb-tab').forEach(function (x) { x.classList.remove('is-active'); });
+          b.classList.add('is-active');
+          play(item);
+        });
+        tabs.appendChild(b);
+      });
+    }
+    play(list[0]);
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
 
   function close() {
     overlay.classList.remove('is-open');
@@ -26,22 +64,19 @@
   });
 
   document.addEventListener('click', function (e) {
-    var el = e.target.closest('[data-vimeo],[data-youtube]');
+    var el = e.target.closest('[data-vimeo],[data-youtube],[data-playlist]');
     if (!el) return;
-    var src = '';
-    var vid = el.getAttribute('data-vimeo');
-    var yid = el.getAttribute('data-youtube');
-    if (vid) {
-      src = 'https://player.vimeo.com/video/' + vid + '?autoplay=1&title=0&byline=0&portrait=0';
-    } else if (yid) {
-      src = 'https://www.youtube.com/embed/' + yid + '?autoplay=1&rel=0&modestbranding=1';
+    var list = [];
+    var pl = el.getAttribute('data-playlist');
+    if (pl) {
+      try { list = JSON.parse(pl); } catch (err) { list = []; }
+    } else if (el.getAttribute('data-vimeo')) {
+      list = [{ v: el.getAttribute('data-vimeo') }];
+    } else if (el.getAttribute('data-youtube')) {
+      list = [{ y: el.getAttribute('data-youtube') }];
     }
-    if (!src) return;
+    if (!list.length) return;
     e.preventDefault();
-    frame.innerHTML =
-      '<iframe src="' + src + '" ' +
-      'allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
-    overlay.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
+    open(list);
   });
 })();
