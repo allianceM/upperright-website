@@ -35,14 +35,14 @@
   const pctEl = $('#loader-pct');
   const ldots = $$('.ldot');
 
-  const D_OPEN = 'M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z';
-  const D_CLOSED = 'M20 25 L20 80 L80 80 L80 31 L71 31.5 L71 25 Z';
+  const D_OPEN = 'M0 0 L0 100 L100 100 L100 49.64 L47.71 52.29 L50.36 0 Z';
+  const D_CLOSED = 'M0 0 L0 100 L100 100 L100 10.9 L85 11.8 L85 0 Z';
 
   let chomp, feed;
   function startChomp() {
     chomp = gsap.to(mouth, { attr: { d: D_CLOSED }, duration: 0.28, ease: 'power2.inOut', yoyo: true, repeat: -1 });
     const logoR = $('.loader-logo').getBoundingClientRect();
-    const mouthX = logoR.left + logoR.width * 0.60;
+    const mouthX = logoR.left + logoR.width * 0.72;
     feed = gsap.fromTo(ldots,
       { x: 0, opacity: 1, scale: 1 },
       { x: (i, el) => mouthX - el.getBoundingClientRect().left, opacity: 0, scale: 0.2, duration: 1.15, ease: 'power1.in', stagger: { each: 0.34, repeat: -1 } });

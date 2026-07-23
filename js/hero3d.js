@@ -65,11 +65,11 @@ import * as CANNON from 'cannon-es';
   wall(0, 0, 1, R.z); wall(0, 0, -1, R.z);
 
   /* ---------- L-shape geometry (logo silhouette) ---------- */
-  // logo: 60x55 square with 35x28 bite at top-right → unit-scaled
-  const S = 0.045;
+  // logo: 100x100 square with 52x52 bite at top-right → unit-scaled
+  const S = 0.027;
   const shape = new THREE.Shape();
-  shape.moveTo(0, 0); shape.lineTo(60 * S, 0); shape.lineTo(60 * S, 27 * S);
-  shape.lineTo(25 * S, 27 * S); shape.lineTo(25 * S, 55 * S); shape.lineTo(0, 55 * S);
+  shape.moveTo(0, 0); shape.lineTo(100 * S, 0); shape.lineTo(100 * S, 48 * S);
+  shape.lineTo(48 * S, 48 * S); shape.lineTo(48 * S, 100 * S); shape.lineTo(0, 100 * S);
   shape.closePath();
   const lGeo = new THREE.ExtrudeGeometry(shape, { depth: 0.95, bevelEnabled: true, bevelThickness: 0.1, bevelSize: 0.09, bevelSegments: 4, curveSegments: 6 });
   lGeo.center();
@@ -87,7 +87,7 @@ import * as CANNON from 'cannon-es';
     scene.add(mesh);
     const body = new CANNON.Body({ mass: 1.2, angularDamping: 0.15, linearDamping: 0.12 });
     // compound: left column + bottom slab (relative to centered geo)
-    const w = 60 * S, h = 55 * S, cw = 25 * S, sh = 27 * S, d = 1.05;
+    const w = 100 * S, h = 100 * S, cw = 48 * S, sh = 48 * S, d = 1.05;
     body.addShape(new CANNON.Box(new CANNON.Vec3(cw / 2, h / 2, d / 2)), new CANNON.Vec3(-(w / 2 - cw / 2), 0, 0));
     body.addShape(new CANNON.Box(new CANNON.Vec3((w - cw) / 2, sh / 2, d / 2)), new CANNON.Vec3(cw / 2, -(h / 2 - sh / 2), 0));
     body.position.set(pos.x, pos.y, pos.z);
