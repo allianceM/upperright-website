@@ -1,5 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="17.0000 19.3432 66.0000 66.0000">
-  
-  <path d="M20 25 L20 80 L80 80 L80 53 L45 55 L45 25 Z" fill="currentColor" />
-  <ellipse cx="62" cy="38" rx="11" ry="14" fill="#C3DC93" transform="rotate(-30 62 38)" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 110 110">
+  <path d="M45.295 100 L0 100 L0 0 L50.357 0 Z M0 100 L0 54.706 L100 49.644 L100 100 Z" fill="currentColor" />
+  <path d="M92.206 7.929 C99.684 15.446 98.543 28.705 89.658 37.542 C80.774 46.378 67.511 47.448 60.033 39.931 C52.556 32.414 53.697 19.156 62.581 10.319 C71.465 1.482 84.729 0.412 92.206 7.929 Z" fill="#C3DC93" />
 </svg>
